@@ -8,13 +8,13 @@
       - By more option
     - Algorithm
       - Normal
-      - color
-      - size
-      - font
-      - zoom
-      - rotation
-      - add lines & shapes
-      - twist
+      - Color
+      - Size
+      - Font
+      - Zoom
+      - Rotation
+      - Add lines & shapes
+      - Twist
 - API
   - RSA Encrypt
   - API params
