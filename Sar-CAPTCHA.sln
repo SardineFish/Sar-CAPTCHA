@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sar-CAPTCHA", "Sar-CAPTCHA\Sar-CAPTCHA.csproj", "{5D1205E0-DC04-4C8E-AD21-0127CCC609BC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sar-CAPTHCA", "Sar-CAPTHCA\Sar-CAPTHCA.csproj", "{B741A660-19DB-4D72-801B-551233981C7E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebTest", "WebTest\WebTest.csproj", "{DA1A7A70-C93F-4047-BCE4-3659C712DACC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +13,14 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{5D1205E0-DC04-4C8E-AD21-0127CCC609BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5D1205E0-DC04-4C8E-AD21-0127CCC609BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5D1205E0-DC04-4C8E-AD21-0127CCC609BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5D1205E0-DC04-4C8E-AD21-0127CCC609BC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B741A660-19DB-4D72-801B-551233981C7E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B741A660-19DB-4D72-801B-551233981C7E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B741A660-19DB-4D72-801B-551233981C7E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B741A660-19DB-4D72-801B-551233981C7E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DA1A7A70-C93F-4047-BCE4-3659C712DACC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA1A7A70-C93F-4047-BCE4-3659C712DACC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA1A7A70-C93F-4047-BCE4-3659C712DACC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA1A7A70-C93F-4047-BCE4-3659C712DACC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
