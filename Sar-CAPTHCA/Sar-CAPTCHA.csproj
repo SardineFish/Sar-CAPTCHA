@@ -7,10 +7,11 @@
     <ProjectGuid>{B741A660-19DB-4D72-801B-551233981C7E}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Sar_CAPTHCA</RootNamespace>
-    <AssemblyName>Sar-CAPTHCA</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <RootNamespace>Sar_CAPTCHA</RootNamespace>
+    <AssemblyName>Sar-CAPTCHA</AssemblyName>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
