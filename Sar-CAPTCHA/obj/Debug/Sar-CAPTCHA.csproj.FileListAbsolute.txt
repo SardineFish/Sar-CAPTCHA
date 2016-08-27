@@ -1,0 +1,5 @@
+H:\Web\Sar-CAPTCHA\Sar-CAPTCHA\bin\Debug\Sar-CAPTCHA.dll
+H:\Web\Sar-CAPTCHA\Sar-CAPTCHA\bin\Debug\Sar-CAPTCHA.pdb
+H:\Web\Sar-CAPTCHA\Sar-CAPTCHA\obj\Debug\Sar-CAPTCHA.csprojResolveAssemblyReference.cache
+H:\Web\Sar-CAPTCHA\Sar-CAPTCHA\obj\Debug\Sar-CAPTCHA.dll
+H:\Web\Sar-CAPTCHA\Sar-CAPTCHA\obj\Debug\Sar-CAPTCHA.pdb
