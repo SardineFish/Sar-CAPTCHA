@@ -3,8 +3,8 @@
   - Create
     - Params
       - By text
-      - By text & text
-      - By text & text & font
+      - By text & size
+      - By text & size & font
       - By more option
     - Algorithm
       - Normal
