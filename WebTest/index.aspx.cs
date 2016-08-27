@@ -20,6 +20,7 @@ namespace WebTest
             Response.ClearContent();
             Response.ContentType = "image/PNG";
             Response.BinaryWrite(ms.GetBuffer());
+
         }
     }
 }
