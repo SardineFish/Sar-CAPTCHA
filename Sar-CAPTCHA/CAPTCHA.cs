@@ -19,13 +19,21 @@ namespace SarCAPTCHA
         {
             Bitmap bitmap = new Bitmap(width, height);
             Graphics graphics = Graphics.FromImage(bitmap);
+            //Background color
             graphics.Clear(Color.White);
-            var random = new Random();
-            var font = new Font(FontFamily.GenericSerif, 20);
 
+            float x = 0;
+            float y = 0;
+            foreach(var chr in text)
+            {
+                var random = new Random();
+                var font = new Font(FontFamily.GenericSerif, 20);
+                var size = graphics.MeasureString(chr.ToString(), font);
 
-            var size = graphics.MeasureString(text, font);
-            graphics.DrawString(text, font, Brushes.Black, new PointF(0, 0));
+                graphics.DrawString(chr.ToString(), font, Brushes.Black, new PointF(x, y));
+
+                x += size.Width;
+            }
             return bitmap;
         }
     }

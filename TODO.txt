@@ -7,7 +7,7 @@
       - By text & size & font
       - By more option
     - Algorithm
-      - Normal
+      - <del>Normal</del>
       - Color
       - Size
       - Font
