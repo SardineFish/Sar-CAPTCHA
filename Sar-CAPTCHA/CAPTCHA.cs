@@ -143,7 +143,7 @@ namespace SarCAPTCHA
             {
                 widthList[i] = width * (widthList[i] / sum);
             }
-
+            
 
             float x = 0;
             float y = 0;
