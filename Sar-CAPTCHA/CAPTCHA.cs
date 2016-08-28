@@ -73,6 +73,8 @@ namespace SarCAPTCHA
             "Onyx",
             "Playbill",
             "Small Fonts",
+            "Microsoft Yi Baiti",
+
             });
         public static List<string> IgnoreFonts
         {
