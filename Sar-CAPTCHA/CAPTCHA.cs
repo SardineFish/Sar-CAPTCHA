@@ -11,29 +11,42 @@ namespace SarCAPTCHA
     public class CAPTCHA
     {
 
-        static double sizeDeviation = 0.4;
-        public static double SizeDeviation
+        static double sizeOffset = 0.4;
+        public static double SizeOffset
         {
             get
             {
-                return sizeDeviation;
+                return sizeOffset;
             }
             set
             {
-                sizeDeviation = value;
+                sizeOffset = value;
             }
         }
 
-        static double positionDeviation = 0.3;
-        public static double PositionDeviation
+        static double positionOffset = 0.3;
+        public static double PositionOffset
         {
             get
             {
-                return positionDeviation;
+                return positionOffset;
             }
             set
             {
-                positionDeviation = value;
+                positionOffset = value;
+            }
+        }
+
+        static double colorOffset = 0.5;
+        public static double ColorOffset
+        {
+            get
+            {
+                return colorOffset;
+            }
+            set
+            {
+                colorOffset = value;
             }
         }
 
@@ -142,20 +155,18 @@ namespace SarCAPTCHA
             Graphics graphics = Graphics.FromImage(bitmap);
             var random = new Random();
             //Background color
-            var red = (int)(256 * random.NextDouble());
-            var green = (int)(256 * random.NextDouble());
-            var blue = (int)(256 * random.NextDouble());
-            Color bgColor = Color.FromArgb(red, green, blue);
-            var bgGray = (int)(bgColor.R * 0.299 + bgColor.G * 0.587 + bgColor.B * 0.114);
-            //graphics.Clear(bgColor);
+            var bgColor = HSBColor.Random();
+            /*bgColor.S = 0.3;
+            bgColor.B = -(bgColor.B - 1) * (bgColor.B - 1) + 1;*/
+            bgColor.S = 0.33;
+            bgColor.B = 1;
             graphics.Clear(Color.White);
-            var gray = (bgGray + 128) % 256;
 
             var widthList = new double[text.Length];
             double sum = 0;
             for(var i = 0; i < widthList.Length; i++)
             {
-                widthList[i] = SizeDeviation * random.NextDouble();
+                widthList[i] = SizeOffset * random.NextDouble();
                 var sign = Math.Sign(0.5 - random.NextDouble());
                 widthList[i] *= sign;
                 widthList[i] += 1;
@@ -187,19 +198,23 @@ namespace SarCAPTCHA
                     size = graphics.MeasureString(chr, font);
 
                     //Random Position
-                    var dx = size.Width * (PositionDeviation * random.NextDouble()) * Math.Sign(0.5 - random.NextDouble());
-                    var dy = size.Height * (PositionDeviation * random.NextDouble()) * Math.Sign(0.5 - random.NextDouble());
+                    var dx = size.Width * (PositionOffset * random.NextDouble()) * Math.Sign(0.5 - random.NextDouble());
+                    var dy = size.Height * (PositionOffset * random.NextDouble()) * Math.Sign(0.5 - random.NextDouble());
                     float x = (float)(nextX + dx);
                     float y = (float)((height - size.Height) / 2 + dy);
 
                     //Ramdom Color
-
-
-                    graphics.DrawString(chr, font, Brushes.Black, new PointF(x, y));
+                    var color = HSBColor.Random();
+                    var offset = ColorOffset * random.NextDouble() * Math.Sign(0.5 - random.NextDouble()) + 1;
+                    color.S = 1;
+                    color.B = 0.5;
+                    color.H += 180;
+                    color.H *= offset;
+                    graphics.DrawString(chr, font, new SolidBrush(color.ToRGB()), new PointF(x, y));
                     nextX += size.Width;
                     
                 }
-                catch
+                catch (Exception ex)
                 {
                     goto Retry;
                 }
