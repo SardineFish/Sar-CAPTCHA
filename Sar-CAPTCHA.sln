@@ -9,6 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sar-CAPTCHA", "Sar-CAPTCHA\
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{F76D3C5E-0302-430D-A557-6BF055CC97AC}"
 	ProjectSection(SolutionItems) = preProject
+		THANKS.txt = THANKS.txt
 		TODO.txt = TODO.txt
 	EndProjectSection
 EndProject
