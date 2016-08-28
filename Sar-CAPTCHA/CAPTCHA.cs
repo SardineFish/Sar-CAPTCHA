@@ -11,29 +11,16 @@ namespace SarCAPTCHA
     public class CAPTCHA
     {
 
-        static double maxZoom = 1.5;
-        public static double MaxZoom
+        static double sizeDeviation = 0.4;
+        public static double SizeDeviation
         {
             get
             {
-                return maxZoom;
+                return sizeDeviation;
             }
             set
             {
-                maxZoom = value;
-            }
-        }
-
-        static double minZoom = 0.5;
-        public static double MinZoom
-        {
-            get
-            {
-                return minZoom;
-            }
-            set
-            {
-                minZoom = value;
+                sizeDeviation = value;
             }
         }
 
@@ -61,6 +48,23 @@ namespace SarCAPTCHA
             Graphics graphics = Graphics.FromImage(bitmap);
             //Background color
             graphics.Clear(Color.White);
+            var random = new Random();
+
+            var widthList = new double[text.Length];
+            double sum = 0;
+            for(var i = 0; i < widthList.Length; i++)
+            {
+                widthList[i] = SizeDeviation * random.NextDouble();
+                var sign = Math.Sign(0.5 - random.NextDouble());
+                widthList[i] *= sign;
+                widthList[i] += 1;
+                sum += widthList[i];
+            }
+            for (var i = 0; i < widthList.Length; i++)
+            {
+                widthList[i] = width * (widthList[i] / sum);
+            }
+
 
             float x = 0;
             float y = 0;
@@ -68,25 +72,16 @@ namespace SarCAPTCHA
             for (int i = 0; i < text.Length; i++)
             {
                 var chr = text[i].ToString();
-                var random = new Random();
                 var fontFamily = FontFamily.Families[random.Next(FontFamily.Families.Length)];
-                float fontSize = width / text.Length;
-
-                #region Zoom
-
-
-
-                #endregion
-            }
-            foreach (var chr in text)
-            {
-                var random = new Random();
-                var font = new Font(FontFamily.GenericSerif, 20);
-                var size = graphics.MeasureString(chr.ToString(), font);
-
-                graphics.DrawString(chr.ToString(), font, Brushes.Black, new PointF(x, y));
-
+                FontFamily f = new FontFamily(System.Drawing.Text.GenericFontFamilies.SansSerif);
+                float fontSize = widthRest / text.Length;
+                fontSize = (float)(widthList[i]);
+                var font = new Font(f, fontSize, GraphicsUnit.Pixel);
+                var size = graphics.MeasureString(chr, font);
+                y = (height - size.Height) / 2;
+                graphics.DrawString(chr, font, Brushes.Black, new PointF(x, y));
                 x += size.Width;
+                widthRest -= size.Width;
             }
             return bitmap;
         }
