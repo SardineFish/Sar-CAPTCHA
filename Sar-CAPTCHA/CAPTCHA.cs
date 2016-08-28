@@ -24,6 +24,80 @@ namespace SarCAPTCHA
             }
         }
 
+        static List<FontFamily> fontFamilies = new List<FontFamily>(FontFamily.Families);
+        static public List<FontFamily> FontFamilies
+        {
+            get
+            {
+                return fontFamilies;
+            }
+            set
+            {
+                fontFamilies = value;
+            }
+        }
+
+        static List<string> ignoreFonts = new List<string>(new string[]
+            { "Marlett",
+            "Bauhaus 93",
+            "Bookshelf Symbol 7",
+            "Brush Script MT",
+            "Brush Script Std",
+            "Freestyle Script",
+            "French Script MT",
+            "Giddyup Std",
+            "Harlow Solid Italic",
+            "Informal Roman",
+            "Juice ITC",
+            "Kunstler Script",
+            "Magneto",
+            "Matura MT Script Capitals",
+            "Mesquite Std",
+            "Mistral",
+            "MS Reference Specialty",
+            "MT Extra",
+            "Old English Text MT",
+            "Parchment",
+            "Rosewood Std Regular",
+            "Snap ITC",
+            "Symbol",
+            "Vivaldi",
+            "Vladimir Script",
+            "Webdings",
+            "Wingdings",
+            "Wingdings 2",
+            "Wingdings 3",
+            "Microsoft Himalaya",
+            "Niagara Engraved",
+            "Niagara Solid",
+            "Onyx",
+            "Playbill",
+            "Small Fonts",
+            });
+        public static List<string> IgnoreFonts
+        {
+            get
+            {
+                return ignoreFonts;
+            }
+            set
+            {
+                ignoreFonts = value;
+                foreach ( var ignoreFont in value)
+                {
+                    foreach (var font in fontFamilies)
+                    {
+                        if (ignoreFont == font.Name )
+                        {
+                            FontFamilies.Remove(font);
+                            break;
+                        }
+                    }
+                }
+                
+            }
+        }
+
         static double rotateLimit = 30;
         public static double RotateLimit
         {
@@ -35,6 +109,11 @@ namespace SarCAPTCHA
             {
                 rotateLimit = value;
             }
+        }
+
+        static CAPTCHA()
+        {
+            IgnoreFonts = ignoreFonts;
         }
 
         public static Image Create()
@@ -72,16 +151,24 @@ namespace SarCAPTCHA
             for (int i = 0; i < text.Length; i++)
             {
                 var chr = text[i].ToString();
-                var fontFamily = FontFamily.Families[random.Next(FontFamily.Families.Length)];
-                FontFamily f = new FontFamily(System.Drawing.Text.GenericFontFamilies.SansSerif);
-                float fontSize = widthRest / text.Length;
-                fontSize = (float)(widthList[i]);
-                var font = new Font(f, fontSize, GraphicsUnit.Pixel);
-                var size = graphics.MeasureString(chr, font);
-                y = (height - size.Height) / 2;
-                graphics.DrawString(chr, font, Brushes.Black, new PointF(x, y));
-                x += size.Width;
-                widthRest -= size.Width;
+                Retry:
+                try
+                {
+                    var fontFamily = FontFamilies[random.Next(FontFamilies.Count)];
+                    FontFamily f = new FontFamily(System.Drawing.Text.GenericFontFamilies.SansSerif);
+                    float fontSize = widthRest / text.Length;
+                    fontSize = (float)(widthList[i]);
+                    var font = new Font(fontFamily, fontSize, GraphicsUnit.Pixel);
+                    var size = graphics.MeasureString(chr, font);
+                    y = (height - size.Height) / 2;
+                    graphics.DrawString(chr, font, Brushes.Black, new PointF(x, y));
+                    x += size.Width;
+                    widthRest -= size.Width;
+                }
+                catch
+                {
+                    goto Retry;
+                }
             }
             return bitmap;
         }
