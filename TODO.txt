@@ -11,7 +11,7 @@
       - Color
       - <del>Size</del>
       - <del>Font</del>
-      - Zoom
+      - <del>Zoom</del>
       - Rotation
       - Add lines & shapes
       - Twist

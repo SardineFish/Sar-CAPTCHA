@@ -140,9 +140,16 @@ namespace SarCAPTCHA
         {
             Bitmap bitmap = new Bitmap(width, height);
             Graphics graphics = Graphics.FromImage(bitmap);
-            //Background color
-            graphics.Clear(Color.White);
             var random = new Random();
+            //Background color
+            var red = (int)(256 * random.NextDouble());
+            var green = (int)(256 * random.NextDouble());
+            var blue = (int)(256 * random.NextDouble());
+            Color bgColor = Color.FromArgb(red, green, blue);
+            var bgGray = (int)(bgColor.R * 0.299 + bgColor.G * 0.587 + bgColor.B * 0.114);
+            //graphics.Clear(bgColor);
+            graphics.Clear(Color.White);
+            var gray = (bgGray + 128) % 256;
 
             var widthList = new double[text.Length];
             double sum = 0;
@@ -172,16 +179,22 @@ namespace SarCAPTCHA
                     FontFamily f = new FontFamily(System.Drawing.Text.GenericFontFamilies.SansSerif);
 
                     //Random Size
-                    var fontSize = (float)(widthList[i]);
+                    var fontSize = 20f;// (float)(widthList[i]);
                     var font = new Font(fontFamily, fontSize, GraphicsUnit.Pixel);
                     var size = graphics.MeasureString(chr, font);
+                    fontSize = (float)(20 / size.Width * widthList[i]);
+                    font = new Font(fontFamily, fontSize, GraphicsUnit.Pixel);
+                    size = graphics.MeasureString(chr, font);
 
                     //Random Position
                     var dx = size.Width * (PositionDeviation * random.NextDouble()) * Math.Sign(0.5 - random.NextDouble());
                     var dy = size.Height * (PositionDeviation * random.NextDouble()) * Math.Sign(0.5 - random.NextDouble());
                     float x = (float)(nextX + dx);
                     float y = (float)((height - size.Height) / 2 + dy);
-                    
+
+                    //Ramdom Color
+
+
                     graphics.DrawString(chr, font, Brushes.Black, new PointF(x, y));
                     nextX += size.Width;
                     
