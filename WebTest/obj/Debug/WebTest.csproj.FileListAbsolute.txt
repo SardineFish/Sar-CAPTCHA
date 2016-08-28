@@ -22,3 +22,14 @@ H:\Web\Sar-CAPTCHA\WebTest\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatfor
 H:\Web\Sar-CAPTCHA\WebTest\obj\Debug\WebTest.csprojResolveAssemblyReference.cache
 H:\Web\Sar-CAPTCHA\WebTest\obj\Debug\WebTest.dll
 H:\Web\Sar-CAPTCHA\WebTest\obj\Debug\WebTest.pdb
+H:\Web\Sar-CAPTCHA\WebTest\bin\Microsoft.AI.DependencyCollector.dll
+H:\Web\Sar-CAPTCHA\WebTest\bin\Microsoft.AI.PerfCounterCollector.dll
+H:\Web\Sar-CAPTCHA\WebTest\bin\Microsoft.AI.ServerTelemetryChannel.dll
+H:\Web\Sar-CAPTCHA\WebTest\bin\Microsoft.AI.Web.dll
+H:\Web\Sar-CAPTCHA\WebTest\bin\Microsoft.AI.WindowsServer.dll
+H:\Web\Sar-CAPTCHA\WebTest\bin\Microsoft.ApplicationInsights.dll
+H:\Web\Sar-CAPTCHA\WebTest\bin\Microsoft.AI.DependencyCollector.xml
+H:\Web\Sar-CAPTCHA\WebTest\bin\Microsoft.AI.ServerTelemetryChannel.xml
+H:\Web\Sar-CAPTCHA\WebTest\bin\Microsoft.AI.Web.xml
+H:\Web\Sar-CAPTCHA\WebTest\bin\Microsoft.AI.WindowsServer.xml
+H:\Web\Sar-CAPTCHA\WebTest\bin\Microsoft.ApplicationInsights.xml

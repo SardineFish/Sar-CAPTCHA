@@ -9,7 +9,7 @@
     - Algorithm
       - <del>Normal</del>
       - Color
-      - Size
+      - <del>Size</del>
       - Font
       - Zoom
       - Rotation
