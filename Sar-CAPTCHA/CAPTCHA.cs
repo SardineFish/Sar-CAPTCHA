@@ -24,6 +24,19 @@ namespace SarCAPTCHA
             }
         }
 
+        static double positionDeviation = 0.3;
+        public static double PositionDeviation
+        {
+            get
+            {
+                return positionDeviation;
+            }
+            set
+            {
+                positionDeviation = value;
+            }
+        }
+
         static List<FontFamily> fontFamilies = new List<FontFamily>(FontFamily.Families);
         static public List<FontFamily> FontFamilies
         {
@@ -147,25 +160,31 @@ namespace SarCAPTCHA
             }
             
 
-            float x = 0;
-            float y = 0;
-            float widthRest = width;
+            float nextX = 0;
             for (int i = 0; i < text.Length; i++)
             {
                 var chr = text[i].ToString();
                 Retry:
                 try
                 {
+                    //Random Font
                     var fontFamily = FontFamilies[random.Next(FontFamilies.Count)];
                     FontFamily f = new FontFamily(System.Drawing.Text.GenericFontFamilies.SansSerif);
-                    float fontSize = widthRest / text.Length;
-                    fontSize = (float)(widthList[i]);
+
+                    //Random Size
+                    var fontSize = (float)(widthList[i]);
                     var font = new Font(fontFamily, fontSize, GraphicsUnit.Pixel);
                     var size = graphics.MeasureString(chr, font);
-                    y = (height - size.Height) / 2;
+
+                    //Random Position
+                    var dx = size.Width * (PositionDeviation * random.NextDouble()) * Math.Sign(0.5 - random.NextDouble());
+                    var dy = size.Height * (PositionDeviation * random.NextDouble()) * Math.Sign(0.5 - random.NextDouble());
+                    float x = (float)(nextX + dx);
+                    float y = (float)((height - size.Height) / 2 + dy);
+                    
                     graphics.DrawString(chr, font, Brushes.Black, new PointF(x, y));
-                    x += size.Width;
-                    widthRest -= size.Width;
+                    nextX += size.Width;
+                    
                 }
                 catch
                 {

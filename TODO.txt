@@ -10,7 +10,7 @@
       - <del>Normal</del>
       - Color
       - <del>Size</del>
-      - Font
+      - <del>Font</del>
       - Zoom
       - Rotation
       - Add lines & shapes
